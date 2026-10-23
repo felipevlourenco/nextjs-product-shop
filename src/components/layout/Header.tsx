@@ -1,4 +1,6 @@
+import clsx from 'clsx';
 import { ReactNode } from 'react';
+import './Header.css';
 
 export default function Header({
     title,
@@ -8,7 +10,7 @@ export default function Header({
     children: ReactNode;
 }) {
     return (
-        <header>
+        <header className={clsx('header', 'p-4')}>
             SHARED HEADER: {title}
             {children}
         </header>

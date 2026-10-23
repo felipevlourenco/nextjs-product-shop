@@ -1,11 +1,13 @@
 'use client';
 
 import { createContext, useContext } from 'react';
-import { Product } from '../products/types/product';
-import { type Cart } from './types/cart';
+import { Product } from '../../products/types/product';
+import { type Cart } from '../types/cart';
 
 interface CartContextState {
     cart: Cart;
+    isOpen: boolean;
+    toggleCart: () => void;
     addProduct: (product: Product) => void;
     removeProduct: (product: Product) => void;
 }

@@ -1,10 +1,10 @@
 'use client';
 
-import { ReactNode, useReducer } from 'react';
-import { Product } from '../products/types/product';
+import { ReactNode, useReducer, useState } from 'react';
+import { Product } from '../../products/types/product';
+import { Cart, CartItem } from '../types/cart';
+import { calculateTotalPrice, mapProductToCart } from '../utils';
 import { CartContext } from './CartContext';
-import { Cart, CartItem } from './types/cart';
-import { calculateTotalPrice, mapProductToCart } from './utils';
 
 type CartState = Cart;
 
@@ -67,8 +67,12 @@ function reducer(state: CartState, action: CartAction) {
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
+    const [isCartOpen, setIsCartOpen] = useState(false);
     const [state, dispatch] = useReducer(reducer, { items: [], total: 0 });
 
+    const toggleCart = () => {
+        setIsCartOpen((previousIsOpen) => !previousIsOpen);
+    };
     const addProduct = (product: Product) =>
         dispatch({ action: 'add', payload: mapProductToCart(product) });
     const removeProduct = (product: Product) =>
@@ -78,6 +82,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         <CartContext.Provider
             value={{
                 cart: state,
+                isOpen: isCartOpen,
+                toggleCart,
                 addProduct,
                 removeProduct,
             }}

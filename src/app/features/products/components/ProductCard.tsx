@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, Card } from 'tintora';
-import { useCart } from '../../cart/CartContext';
+import { useCart } from '../../cart/context/CartContext';
 import { Product } from '../types/product';
 
 export default function ProductCard({
