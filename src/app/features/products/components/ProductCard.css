@@ -1,0 +1,22 @@
+.product-card {
+    height: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px 18px 18px;
+}
+
+.product-card__title {
+    margin: 0;
+    font: var(--tintora-font-label);
+}
+
+.product-card__price-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+.product-card__price-label {
+    font: var(--tintora-font-stat-value);
+    color: var(--tintora-color-accent-deep);
+}

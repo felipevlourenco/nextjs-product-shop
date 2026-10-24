@@ -1,6 +1,8 @@
 import { Product, productSchema } from '../types/product';
 
 export async function getProduct(id: number): Promise<Product | null> {
+    'use cache';
+
     const url = process.env.API_URL;
 
     if (!url) {

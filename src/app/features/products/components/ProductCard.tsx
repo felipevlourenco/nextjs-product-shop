@@ -2,9 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { ViewTransition } from 'react';
 import { Button, Card } from 'tintora';
 import { useCart } from '../../cart/context/CartContext';
 import { Product } from '../types/product';
+import './ProductCard.css';
 
 export default function ProductCard({
     product,
@@ -20,49 +22,25 @@ export default function ProductCard({
     };
 
     return (
-        <Card
-            title={product.title}
-            style={{
-                flexDirection: 'column',
-                alignItems: 'stretch',
-                gap: 14,
-                padding: '16px 18px 18px',
-            }}
-        >
+        <Card title={product.title} className="product-card">
             <Link href={`/${product.id}`}>
-                <Image
-                    alt={product.title}
-                    src={product.images[0]}
-                    width={100}
-                    height={100}
-                    loading={eager ? 'eager' : 'lazy'}
-                />
-                <h3
-                    style={{
-                        margin: 0,
-                        font: 'var(--tintora-font-label)',
-                    }}
-                >
-                    {product.title}
-                </h3>
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'baseline',
-                        gap: 4,
-                    }}
-                >
-                    <span
-                        style={{
-                            font: 'var(--tintora-font-stat-value)',
-                            color: 'var(--tintora-color-accent-deep)',
-                        }}
-                    >
+                <ViewTransition name={`product-${product.id}`}>
+                    <Image
+                        alt={product.title}
+                        src={product.images[0]}
+                        width={100}
+                        height={100}
+                        loading={eager ? 'eager' : 'lazy'}
+                    />
+                </ViewTransition>
+                <h3 className="product-card__title">{product.title}</h3>
+                <div className="product-card__price-wrapper">
+                    <span className="product-card__price-label">
                         € {product.price}
                     </span>
                 </div>
             </Link>
-            <Button variant="primary" onClick={onAddHandler}>
+            <Button variant="primary" onClick={onAddHandler} fullWidth>
                 Add to cart
             </Button>
         </Card>

@@ -2,4 +2,4 @@ allowBuilds:
   sharp: false
   unrs-resolver: false
 minimumReleaseAgeExclude:
-  - tintora@0.24.0 || 1.0.0
+  - tintora@0.24.0 || 1.0.0 || 1.1.0

@@ -1,3 +1,7 @@
+'use client';
+
+import { Spinner } from 'tintora';
+
 export default function Loading() {
-    return <h1>Loading products list...</h1>;
+    return <Spinner />;
 }

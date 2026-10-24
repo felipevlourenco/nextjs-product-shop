@@ -179,8 +179,8 @@ importers:
         specifier: 19.3.0
         version: 19.3.0(react@19.3.0)
       tintora:
-        specifier: ^1.0.0
-        version: 1.0.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^1.1.0
+        version: 1.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       zod:
         specifier: ^4.6.7
         version: 4.6.7
@@ -2117,8 +2117,8 @@ packages:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
 
-  tintora@1.0.0:
-    resolution: {integrity: sha512-XVUOJvqdLuRycb9x70uOcaJStIQ1tBdu5/mk6BceH2Ix7Dc49DjhbS0Ob3X9+2ZQsBcSLXxluXSKUC8TgCdgbg==}
+  tintora@1.1.0:
+    resolution: {integrity: sha512-gB3kgy0kzgWMcQHKmJLR2czaUJJPQjspL8yXgvthWArsUQOJVXXiUNJu7lZZrsKA9PVYi9LedVnne9BjjRepsQ==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
@@ -4299,7 +4299,7 @@ snapshots:
 
   tapable@2.3.3: {}
 
-  tintora@1.0.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  tintora@1.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
