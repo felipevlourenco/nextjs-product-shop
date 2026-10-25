@@ -1,5 +1,3 @@
-'use client';
-
 import { Spinner } from 'tintora';
 
 export default function Loading() {

@@ -1,5 +1,3 @@
-'use client';
-
 import AddToCartButton from '@/components/ui/AddToCartButton';
 import Image from 'next/image';
 import Link from 'next/link';
