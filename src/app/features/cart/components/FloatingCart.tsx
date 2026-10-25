@@ -15,14 +15,12 @@ export default function FloatingCart() {
 
     return (
         <Drawer onClose={toggleCart} open={isOpen}>
-            <>
-                {cart.items.map((item) => (
-                    <div key={item.id}>
-                        {item.title} × {item.amount}
-                    </div>
-                ))}
-                <button onClick={toggleCart}>Close</button>
-            </>
+            {cart.items.map((item) => (
+                <div key={item.id}>
+                    {item.title} × {item.amount}
+                </div>
+            ))}
+            <button onClick={toggleCart}>Close</button>
         </Drawer>
     );
 }

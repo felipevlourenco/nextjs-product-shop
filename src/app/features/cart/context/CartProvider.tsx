@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useReducer, useState } from 'react';
+import { ReactNode, useMemo, useReducer, useState } from 'react';
 import { Product } from '../../products/types/product';
 import { Cart, CartItem } from '../types/cart';
 import { calculateTotalPrice, mapProductToCart } from '../utils';
@@ -78,17 +78,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
     const removeProduct = (product: Product) =>
         dispatch({ action: 'remove', payload: mapProductToCart(product) });
 
+    const value = useMemo(
+        () => ({
+            cart: state,
+            isOpen: isCartOpen,
+            toggleCart,
+            addProduct,
+            removeProduct,
+        }),
+        [isCartOpen, state],
+    );
+
     return (
-        <CartContext.Provider
-            value={{
-                cart: state,
-                isOpen: isCartOpen,
-                toggleCart,
-                addProduct,
-                removeProduct,
-            }}
-        >
-            {children}
-        </CartContext.Provider>
+        <CartContext.Provider value={value}>{children}</CartContext.Provider>
     );
 }

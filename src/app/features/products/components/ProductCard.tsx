@@ -1,10 +1,10 @@
 'use client';
 
+import AddToCartButton from '@/components/ui/AddToCartButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ViewTransition } from 'react';
-import { Button, Card } from 'tintora';
-import { useCart } from '../../cart/context/CartContext';
+import { Card } from 'tintora';
 import { Product } from '../types/product';
 import './ProductCard.css';
 
@@ -15,12 +15,6 @@ export default function ProductCard({
     product: Product;
     eager?: boolean;
 }) {
-    const { addProduct } = useCart();
-
-    const onAddHandler = () => {
-        addProduct(product);
-    };
-
     return (
         <Card title={product.title} className="product-card">
             <Link href={`/${product.id}`}>
@@ -40,9 +34,7 @@ export default function ProductCard({
                     </span>
                 </div>
             </Link>
-            <Button variant="primary" onClick={onAddHandler} fullWidth>
-                Add to cart
-            </Button>
+            <AddToCartButton product={product} fullWidth />
         </Card>
     );
 }

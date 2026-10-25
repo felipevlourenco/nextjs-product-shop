@@ -1,5 +1,6 @@
 import { getProduct } from '@/app/features/products/api/getProduct';
 import { getProducts } from '@/app/features/products/api/getProducts';
+import AddToCartButton from '@/components/ui/AddToCartButton';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ViewTransition } from 'react';
@@ -42,7 +43,7 @@ export default async function ProductDetail({
                     <span>{product.rating}</span>
                     <span>{product.description}</span>
                 </div>
-                {/* <Button variant="primary">Add to cart</Button> */}
+                <AddToCartButton product={product} fullWidth />
             </div>
         </div>
     );
