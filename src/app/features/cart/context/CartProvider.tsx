@@ -44,17 +44,14 @@ function reducer(state: CartState, action: CartAction) {
         }
 
         const item = state.items[index];
-        let items = [...state.items];
-
-        if (item.amount > 1) {
-            items = state.items.map((current, i) =>
-                i === index
-                    ? { ...current, amount: current.amount - 1 }
-                    : current,
-            );
-        } else {
-            items.toSpliced(index, 1);
-        }
+        const items =
+            item.amount > 1
+                ? state.items.map((current, i) =>
+                      i === index
+                          ? { ...current, amount: current.amount - 1 }
+                          : current,
+                  )
+                : state.items.toSpliced(index, 1);
 
         return {
             ...state,
@@ -75,8 +72,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     };
     const addProduct = (product: Product) =>
         dispatch({ action: 'add', payload: mapProductToCart(product) });
-    const removeProduct = (product: Product) =>
-        dispatch({ action: 'remove', payload: mapProductToCart(product) });
+    const removeProduct = (item: CartItem) =>
+        dispatch({ action: 'remove', payload: item });
 
     const value = useMemo(
         () => ({

@@ -2,14 +2,14 @@
 
 import { createContext, useContext } from 'react';
 import { Product } from '../../products/types/product';
-import { type Cart } from '../types/cart';
+import { type Cart, type CartItem } from '../types/cart';
 
 interface CartContextState {
     cart: Cart;
     isOpen: boolean;
     toggleCart: () => void;
     addProduct: (product: Product) => void;
-    removeProduct: (product: Product) => void;
+    removeProduct: (item: CartItem) => void;
 }
 
 export const CartContext = createContext<CartContextState | null>(null);

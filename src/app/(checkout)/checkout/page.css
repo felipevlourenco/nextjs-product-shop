@@ -1,0 +1,4 @@
+.checkout-summary__total {
+    font: var(--tintora-font-stat-value);
+    color: var(--tintora-color-accent-deep);
+}
