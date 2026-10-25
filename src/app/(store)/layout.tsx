@@ -1,5 +1,7 @@
+import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import CartSummary from '../features/cart/components/CartSummary';
+import './layout.css';
 
 export default function StoreLayout({ children }: LayoutProps<'/'>) {
     return (
@@ -7,8 +9,8 @@ export default function StoreLayout({ children }: LayoutProps<'/'>) {
             <Header title="Store">
                 <CartSummary />
             </Header>
-            <main className="m-4">{children}</main>
-            <footer>FOOTER</footer>
+            <main className="main">{children}</main>
+            <Footer />
         </>
     );
 }

@@ -12,8 +12,8 @@ export default function RootLayout({
     floatingCart,
 }: LayoutProps<'/'> & { floatingCart: ReactNode }) {
     return (
-        <html lang="en" className={`h-full antialiased`}>
-            <body className="min-h-full flex flex-col">
+        <html lang="en">
+            <body>
                 <CartProvider>
                     {children}
                     {floatingCart}
