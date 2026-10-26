@@ -7,7 +7,7 @@ import { ViewTransition } from 'react';
 import './page.css';
 
 export async function generateStaticParams() {
-    const products = await getProducts();
+    const { products } = await getProducts();
     return products.map((product) => ({ productId: String(product.id) }));
 }
 
