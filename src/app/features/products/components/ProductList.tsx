@@ -22,7 +22,7 @@ export default function ProductList({
     );
 
     const handleCallback = async ([entry]: IntersectionObserverEntry[]) => {
-        if (entry.isIntersecting && hasMore) {
+        if (entry.isIntersecting && hasMore && !isLoading) {
             setIsLoading(true);
 
             const response = await fetch(

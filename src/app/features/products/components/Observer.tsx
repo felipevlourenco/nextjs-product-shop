@@ -1,6 +1,6 @@
 'use client';
 
-import { ElementType, useEffect, useRef } from 'react';
+import { ElementType, useEffect, useEffectEvent, useRef } from 'react';
 
 interface ObserverProps<C extends ElementType = 'div'> {
     as?: C;
@@ -13,11 +13,15 @@ export default function Observer<C extends ElementType = 'div'>({
 }: ObserverProps<C>) {
     const Component: ElementType = as ?? 'div';
     const listItemRef = useRef<HTMLElement>(null);
+    const onIntersect = useEffectEvent(callback);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(callback, {
-            rootMargin: '100px',
-        });
+        const observer = new IntersectionObserver(
+            (entries) => onIntersect(entries),
+            {
+                rootMargin: '100px',
+            },
+        );
 
         if (listItemRef.current) {
             observer.observe(listItemRef.current);
@@ -26,7 +30,7 @@ export default function Observer<C extends ElementType = 'div'>({
         return () => {
             observer.disconnect();
         };
-    }, [callback]);
+    }, []);
 
     return <Component ref={listItemRef} />;
 }
