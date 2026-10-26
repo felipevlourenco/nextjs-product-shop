@@ -1,9 +1,10 @@
 import AddToCartButton from '@/components/ui/AddToCartButton';
 import Image from 'next/image';
-import Link from 'next/link';
+import { default as NextLink } from 'next/link';
 import { ViewTransition } from 'react';
-import { Card } from 'tintora';
+import { Card, Link } from 'tintora';
 import { Product } from '../types/product';
+// import {Link} from 'tintora'
 import './ProductCard.css';
 
 export default function ProductCard({
@@ -15,7 +16,7 @@ export default function ProductCard({
 }) {
     return (
         <Card title={product.title} className="product-card">
-            <Link href={`/${product.id}`}>
+            <Link href={`/${product.id}`} as={NextLink} variant="transparent">
                 <ViewTransition name={`product-${product.id}`}>
                     <Image
                         alt={product.title}

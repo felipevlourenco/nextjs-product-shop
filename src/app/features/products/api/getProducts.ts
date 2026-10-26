@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { createQueryParam } from '@/utils/params';
 import { Product, productListSchema } from '../types/product';
 
@@ -8,7 +10,7 @@ interface GetProductsOptions {
 
 export async function getProducts(
     params: GetProductsOptions = {},
-): Promise<Product[]> {
+): Promise<{ products: Product[]; total: number }> {
     const url = process.env.API_URL;
 
     if (!url) {
@@ -32,7 +34,7 @@ export async function getProducts(
         const productResponse = productListSchema.safeParse(data.products);
 
         if (productResponse.success) {
-            return productResponse.data;
+            return { products: productResponse.data, total: data.total };
         }
 
         throw new Error(productResponse.error.message);
@@ -40,5 +42,5 @@ export async function getProducts(
         console.error(JSON.stringify(error));
     }
 
-    return [];
+    return { products: [], total: 0 };
 }
