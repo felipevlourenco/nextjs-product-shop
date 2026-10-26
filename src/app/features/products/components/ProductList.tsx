@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Spinner } from 'tintora';
+import type { getProducts } from '../api/getProducts';
 import { Product } from '../types/product';
 import Observer from './Observer';
 import ProductCard from './ProductCard';
@@ -32,7 +33,8 @@ export default function ProductList({
                 throw new Error('Failed to fetch products');
             }
 
-            const nextProducts = await response.json();
+            const nextProducts: Awaited<ReturnType<typeof getProducts>> =
+                await response.json();
 
             setHasMore(
                 products.length + nextProducts.products.length < totalProducts,

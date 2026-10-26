@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { createQueryParam } from '@/utils/params';
-import { Product, productListSchema } from '../types/product';
+import { Product, productsResponseSchema } from '../types/product';
 
 interface GetProductsOptions {
     limit?: number;
@@ -31,13 +31,16 @@ export async function getProducts(
 
         const data = await response.json();
 
-        const productResponse = productListSchema.safeParse(data.products);
+        const productResponse = productsResponseSchema.safeParse(data);
 
         if (productResponse.success) {
-            return { products: productResponse.data, total: data.total };
+            return {
+                products: productResponse.data.products,
+                total: productResponse.data.total,
+            };
         }
 
-        throw new Error(productResponse.error.message);
+        throw new Error(productResponse.error?.message);
     } catch (error) {
         console.error(JSON.stringify(error));
     }

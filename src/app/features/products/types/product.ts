@@ -47,5 +47,11 @@ export const productSchema = z.object({
 });
 
 export const productListSchema = z.array(productSchema);
+export const productsResponseSchema = z.object({
+    products: productListSchema,
+    total: z.number(),
+    skip: z.number(),
+    limit: z.number(),
+});
 
 export type Product = z.infer<typeof productSchema>;
